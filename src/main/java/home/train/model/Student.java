@@ -1,11 +1,15 @@
 package home.train.model;
 
+import javax.persistence.*;
 
+@Entity
 public class Student {
-
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
     private String firstName;
     private String lastName;
+    @Enumerated(EnumType.STRING)
     private Status status;
 
     public Student(){}
@@ -40,5 +44,15 @@ public class Student {
 
     public void setStatus(Status status) {
         this.status = status;
+    }
+
+    @Override
+    public String toString() {
+        return "Student{" +
+                "id=" + id +
+                ", firstName='" + firstName + '\'' +
+                ", lastName='" + lastName + '\'' +
+                ", status=" + status +
+                '}';
     }
 }
